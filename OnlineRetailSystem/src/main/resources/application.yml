@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: OnlineRetailSystem-server
+  main:
+    allow-circular-references: true
+  datasource:
+    #    url: jdbc:sqlserver://localhost:1433;databaseName=OnlineRetailSystem;trustServerCertificate=true
+    url: jdbc:mysql://localhost:3306/OnlineRetailSystem
+    username: root
+    password:
+    driverClassName: com.mysql.cj.jdbc.Driver
+  #    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  jpa:
+    show-sql: true
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL5Dialect
+#        dialect: org.hibernate.dialect.SQLServerDialect
+
+outgoingMailServer: http://localhost:9000
+
+logging:
+  file:
+    name: ./bankApplication.log
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*'
